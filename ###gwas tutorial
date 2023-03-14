@@ -1,0 +1,7 @@
+###gwas tutorial
+mkdir {gwas_tut}
+cd gwas_tut
+git clone https://github.com/MareesAT/GWA_tutorial.git
+cd GWA_tutorial
+unzip 1_QC_GWAS.zip 
+cd 1_QC_GWAS

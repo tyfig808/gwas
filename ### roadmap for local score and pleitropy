@@ -1,0 +1,27 @@
+### roadmap for local score and pleitropy
+
+make subset
+
+filter 
+vcftools
+
+run gwas
+gapit - try blink, otherwise cmlm goes straightinto mash
+emmax
+
+gapit to mash
+r
+
+mash
+r
+
+with bayesian posterior prob
+take rank/number of snps = new pvalue
+posterior means are given for each treatment seperately, need to figure how to solve this 
+
+mash_output$result$PosteriorMean$rank <- NA
+order.scores <- order(mash_output$result$PosteriorMean)
+mash_output$result$PosteriorMean$rank[order.scores] <- 1:nrow(mash_output$result$PosteriorMean)
+
+
+then run local score with this pvalue

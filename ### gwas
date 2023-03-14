@@ -1,0 +1,22 @@
+### gwas
+# On cluster using app Rstudio:  extract maf and DP to map their distribution --> allowing to define threshold for the cleaning 
+### script not tested yet!
+library(vcfR)
+vcftest <- read.vcfR("filtered.vcf.gz")
+maf=maf(fichier, element = 2)
+DP=extract.gt(vcftest, element = "DP")
+
+### see script from create txt file for pheno
+plink2 \
+ --pfile subsetA_T_H_B_fileset --out subsetA_T_H_B_gwas \
+ --allow-extra-chr --pheno pheno_subsetA_T_H_B.txt \
+ --pheno-quantile-normalize \
+ --covar pca_subsetA_T_H_B.eigenvec \
+ --covar-name PC1-PC10 \
+ --covar-variance-standardize \
+ --extract variants_of_interest.txt \
+
+library(qqman)
+nb_flower_B <- read.table("subsetB_T_H_B_gwas.NbFlowers.glm.linear",header=TRUE)   
+
+manhattan(nb_flower_B)
